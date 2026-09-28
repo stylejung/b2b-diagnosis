@@ -1253,7 +1253,10 @@ function showReport(){
   submitResponse({
     submittedAt: new Date().toISOString(),
     companyName: answers.CO1||"", field: answers.CO2||"", mainItem: answers.CO3||"",
-    scores: scores, bm: bm, answers: answers
+    scores: scores, bm: bm, answers: answers,
+    triggers: hardTriggers(answers).map(t=>t.tier+":"+t.axis+":"+t.insightKey),
+    confidence: confidence,
+    gaps: gaps
   });
 
   const legend=AXIS_META.map(ax=>{
